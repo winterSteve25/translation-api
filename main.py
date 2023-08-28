@@ -2,9 +2,12 @@ import os
 import uuid
 
 from flask import Flask, jsonify, request, send_file
+from flask_cors import CORS
+
 from epub import LANGUAGES
 
 app = Flask("translation")
+CORS(app)
 
 
 @app.route('/langs', methods=['GET'])
