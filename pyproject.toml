@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "translation-api"
+version = "0.1.0"
+description = ""
+authors = ["winterSteve25 <w1nter.ish3re@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+google-trans-new = "^1.1.9"
+requests = "^2.31.0"
+bs4 = "^0.0.1"
+lxml = "^4.9.3"
+tqdm = "^4.66.1"
+flask = "^2.3.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
