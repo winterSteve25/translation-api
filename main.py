@@ -4,7 +4,7 @@ import uuid
 from flask import Flask, jsonify, request, send_file
 from flask_cors import CORS
 
-from epub import LANGUAGES
+from translators import LANGUAGES
 
 app = Flask("translation")
 CORS(app)
@@ -15,7 +15,7 @@ def get_langs():
     return jsonify(LANGUAGES)
 
 @app.route('/translate', methods=['POST'])
-def translate_epub():
+def translate():
     binary = request.data
     lang = request.args.get("lang")
     type = request.args.get("type")
@@ -39,11 +39,11 @@ def translate_epub():
         file.write(binary)
 
     if type == "pdf":
-        os.system(f"poetry run python pdf/translator.py {saved_path} {lang} {result_path}")
-        pass
-    elif type == "epub":
-        os.system(f"poetry run python epub/translator.py {saved_path} -l {lang}")
-        pass
+        os.system(f"ebook-convert {saved_path} {filename}.epub")
+        os.system(f"poetry run python translators/epub.py {filename}.epub -l {lang}")
+    else:
+        os.system(f"poetry run python translators/epub.py {saved_path} -l {lang}")
+
 
     response = send_file(result_path, as_attachment=True)
     os.remove(result_path)

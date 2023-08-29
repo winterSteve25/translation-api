@@ -7,13 +7,11 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-google-trans-new = "^1.1.9"
 requests = "^2.31.0"
 bs4 = "^0.0.1"
 lxml = "^4.9.3"
 tqdm = "^4.66.1"
 flask = "^2.3.3"
-pdftotext = "^2.2.2"
 flask-cors = "^4.0.0"
 
 

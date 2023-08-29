@@ -1,5 +1,0 @@
-google_trans_new
-requests
-bs4
-lxml
-tqdm
