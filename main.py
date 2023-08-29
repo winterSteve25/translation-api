@@ -39,11 +39,11 @@ def translate():
         file.write(binary)
 
     if type == "pdf":
-        os.system(f"ebook-convert {saved_path} {filename}.epub")
-        os.system(f"poetry run python translators/epub.py {filename}.epub -l {lang}")
+        epub_path = "./storage/{filename}.epub"
+        os.system(f"ebook-convert {saved_path} {epub_path} --output-profile tablet")
+        os.system(f"poetry run python translators/epub.py {epub_path} -l {lang}")
     else:
         os.system(f"poetry run python translators/epub.py {saved_path} -l {lang}")
-
 
     response = send_file(result_path, as_attachment=True)
     os.remove(result_path)
